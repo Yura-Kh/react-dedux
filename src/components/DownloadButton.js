@@ -1,13 +1,6 @@
-import { fetchIssues } from '../features/issues/issueSlice';
-import store from '../store';
+function DownloadButton(props) {
 
-function DownloadButton() {
-
-    async function onClickHandler() {
-        await store.dispatch(fetchIssues);
-    }
-
-    return <button onClick={onClickHandler}>Download</button>;
+    return <button onClick={props.onClickHandler}>Download</button>;
 
 }
 

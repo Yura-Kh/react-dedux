@@ -16,6 +16,8 @@ const IssueList = () => {
     return <h2>Press download button...</h2>;
   } else if (status === 'loading') {
     return <h2>Loading...</h2>;
+  } else if (status === 'loadingError') {
+    return <h2>Loading Error!!!</h2>;
   }
   
   const renderedListItems = issues.map((issue) => {
