@@ -5,7 +5,6 @@ export default async function getDataFromServer(endpoint) {
         const response = await axios.get(endpoint);
         return response.data;
     } catch(err){
-        //throw Error(err.message);
-        return Promise.reject(err.message);
+        throw err;
     }
 }

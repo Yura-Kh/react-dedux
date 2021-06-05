@@ -12,7 +12,7 @@ export const issuesReducer = (state = initialState, action) => {
         case 'issues/issuesLoaded':
             return {entities: action.payload, status: 'idle'};
         case 'issues/issuesLoadingError':
-            return {...state, status: 'loadingError'};
+            return {...state, status: 'loadingError', errorMessage: action.errorMessage};
         default:
             return state;
     }
@@ -24,7 +24,7 @@ export const fetchIssues = async (dispatch, getState) => {
         const response = await getDataFromServer('https://api.github.com/repos/facebook/react/issues');
         dispatch({ type: 'issues/issuesLoaded', payload: response });
     } catch(error) {
-        console.log(error);
-        dispatch({ type: 'issues/issuesLoadingError'});
+        console.log(error.message);
+        dispatch({ type: 'issues/issuesLoadingError', errorMessage: error.message});
     }
 }
