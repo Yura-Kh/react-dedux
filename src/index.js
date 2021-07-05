@@ -5,11 +5,25 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
 import store from './store';
+import { ConcreteIssue } from './components/ConcreteIssue';
+import {BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+//import { createBrowserHistory } from 'history';
+
+//const customHistory = createBrowserHistory();
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <App />
+        <Router>
+            <Switch>
+                <Route path="/:issueNumber">
+                    <ConcreteIssue/>
+                </Route>
+                <Route path="/">
+                    <App/>
+                </Route>
+            </Switch>
+        </Router>
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')

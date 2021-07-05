@@ -3,17 +3,13 @@ import { useSelector } from 'react-redux';
 import IssueListItem from './IssueListItem';
 
 const currentIssues = (state) => state.issues.entities;
-
 const currentStatus = (state) => state.issues.status;
-
 const currentErrorMessage = (state) => state.issues.errorMessage;
 
 const IssueList = () => {
 
   const issues = useSelector(currentIssues);
-
   const status = useSelector(currentStatus);
-
   const ErrorMessage = useSelector(currentErrorMessage);
 
   if (status === 'default') {
@@ -25,7 +21,7 @@ const IssueList = () => {
   }
   
   const renderedListItems = issues.map((issue) => {
-    return <IssueListItem text={issue.body} />
+    return <IssueListItem text={issue.body} number={issue.number} />
   });
 
   return <ul className="issue-list">{renderedListItems}</ul>;
